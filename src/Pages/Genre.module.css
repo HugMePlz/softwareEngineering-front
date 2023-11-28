@@ -87,15 +87,15 @@
 }
 
 .genreBody::-webkit-scrollbar {
-	width: 15px;  /*스크롤바 너비 */
-    height: 15px;
+	width: 10px;  /*스크롤바 너비 */
+    height: 10px;
 }
 
 /* 스크롤바 막대 꾸미기 */
 .genreBody::-webkit-scrollbar-thumb {
 	height: 30%; /*스크롤바 길이 */
-  background: #b1adad; /*스크롤바 색상*/
-  border-radius: 10px;
+    background: #b1adad; /*스크롤바 색상*/
+    border-radius: 10px;
 }
 
 /* 스크롤바 트랙 꾸미기 */

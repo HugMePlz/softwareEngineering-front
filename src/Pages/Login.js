@@ -23,7 +23,7 @@ const Login = () => {
       })
       .then((response) => {
         if((response.status===200)){
-          alert("로그인 성공");
+          alert("로그인에 성공했습니다.");
           localStorage.setItem("authorization", response.headers.authorization.substr(7));
           return navigate("/main");
         }   

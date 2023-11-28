@@ -232,7 +232,7 @@ const MyPage=()=>{
         })
         .then((response)=>{
             if(response.status===200){
-                alert("리뷰 삭제 성공");
+                alert("리뷰를 삭제했습니다.");
                 window.location.reload();
             }
         })

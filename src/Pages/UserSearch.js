@@ -112,7 +112,7 @@ const UserSearch=()=>{
             <div className={styles.searchBox}>
                 <form onSubmit={onSearchSubmit}>
                     <select onChange={(e)=>{setSearchType(e.target.value)}} name="movie_search" className={styles.searchBox1}>
-                        <option value="userId" >아이디</option>
+                        <option value="userId">아이디</option>
                         <option value="nickname">닉네임</option>
                     </select>
                     <input onChange={(e)=>{setSearchKeyword(e.target.value)}} type="text" className={styles.searchBox2} placeholder="키워드를 입력하세요..." ></input>

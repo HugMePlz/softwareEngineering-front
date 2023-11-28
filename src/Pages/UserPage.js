@@ -136,7 +136,7 @@ const Userpage=()=>{
     })
     .then((response)=>{
       if(response.status===200){
-        alert("구독");
+        alert(`@${nickname}님을 구독했습니다.`);
         window.location.reload();
       }
     })
@@ -154,7 +154,7 @@ const Userpage=()=>{
     })
     .then((response)=>{
       if(response.status===200){
-        alert("구독 취소");
+        alert(`@${nickname}님을 구독 취소했습니다.`);
         window.location.reload();
       }
     })

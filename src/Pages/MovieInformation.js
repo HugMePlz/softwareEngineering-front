@@ -166,7 +166,7 @@ const MovieInformation=()=>{
         })
         .then((response)=>{
             if(response.status===200){
-                alert("리뷰 작성 성공");
+                alert("리뷰 작성에 성공했습니다.");
                 window.location.reload();
             }
         })
@@ -226,7 +226,7 @@ const MovieInformation=()=>{
             })
             .then((response)=>{
                 if(response.status===200){
-                    alert("찜 취소 성공");
+                    alert("북마크를 삭제했습니다.");
                     window.location.reload();
                 }
             })
@@ -243,7 +243,7 @@ const MovieInformation=()=>{
             })
             .then((response)=>{
                 if(response.status===200){
-                    alert("찜 성공!! 마이페이지에서 찜한 영화들을 확인해보세요.");
+                    alert("북마크 성공!! 마이페이지에서 찜한 영화들을 확인해보세요.");
                     window.location.reload();
                 }
             })

@@ -1,7 +1,7 @@
 import styles from './MovieSearch.module.css';
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useAsyncError, useNavigate } from "react-router-dom";
 
 const MovieSearch=()=>{
     const navigate=useNavigate();
@@ -9,52 +9,73 @@ const MovieSearch=()=>{
         navigate("/main");
     }
 
-    const [searchKeyword, setSearchKeyword]=useState("person");
+    const [searchKeyword, setSearchKeyword]=useState("title");
     const [searchContent, setSearchContent]=useState("");
 
+    const [searchSuccess, setSearchSuccess]=useState();
     const [searchMovieId, setSearchMovieId]=useState([]);
     const [searchMoviePoster, setSearchMoviePoster]=useState([]);
     const [searchMovieTitle, setSearchMovieTitle]=useState([]);
 
     const onSubmit=(event)=>{
         event.preventDefault();
-        axios
-        .get("/api/movies/search"+"?"+searchKeyword+"="+searchContent,{
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('authorization') || ''}`,
-            },
-        })
-        .then((response)=>{
-            if(response.status===200){
-                const searchMovieIdArr=[];
-                const searchMoviePosterArr=[];
-                const searchMovieTitleArr=[];
-                for(let i=0;i<response.data.data.length;i++){
-                    searchMovieIdArr.push(response.data.data[i].id);
-                    searchMoviePosterArr.push(response.data.data[i].posterPath);
-                    searchMovieTitleArr.push(response.data.data[i].title);
+        if(searchContent===""){
+            alert("검색어를 입력해주세요.");
+            window.location.reload();
+        }
+        else{
+            axios
+            .get("/api/movies/search"+"?"+searchKeyword+"="+searchContent,{
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('authorization') || ''}`,
+                },
+            })
+            .then((response)=>{
+                if(response.status===200){
+                    console.log(response);
+                    if(response.data.message!==`검색 결과 없음: ${searchContent}`){
+                        setSearchSuccess(true);
+                        const searchMovieIdArr=[];
+                        const searchMoviePosterArr=[];
+                        const searchMovieTitleArr=[];
+                        for(let i=0;i<response.data.data.length;i++){
+                            searchMovieIdArr.push(response.data.data[i].id);
+                            searchMoviePosterArr.push(response.data.data[i].posterPath);
+                            searchMovieTitleArr.push(response.data.data[i].title);
+                        }
+                        setSearchMovieId(searchMovieIdArr);
+                        setSearchMoviePoster(searchMoviePosterArr);
+                        setSearchMovieTitle(searchMovieTitleArr);
+                    }
+                    else{
+                        setSearchSuccess(false);
+                    }
                 }
-                setSearchMovieId(searchMovieIdArr);
-                setSearchMoviePoster(searchMoviePosterArr);
-                setSearchMovieTitle(searchMovieTitleArr);
-            }
-        })
-        .catch((error)=>{
-            console.log(error);
-        })
+            })
+            .catch((error)=>{
+                console.log(error);
+            })
+        } 
     }
 
     const displaySearchMovieData=()=>{
         const searchMovieDataArr=[];
-        for(let i=0;i<searchMovieId.length;i++){
+        if(searchSuccess===true){
+            for(let i=0;i<searchMovieId.length;i++){
+                searchMovieDataArr.push(
+                    <div className={styles.movieComponent}>
+                        <img id="movie-poster" className={styles.moviePoster}
+                            src={searchMoviePoster[i]}
+                            onClick={(e)=>{navigate(`/movie-information/${searchMovieId[i]}`)}}
+                        ></img>
+                        <h3 id="movie-title" className={styles.movieTitle}>{searchMovieTitle[i]}</h3>
+                    </div>
+                )
+            }
+        }
+        else if(searchSuccess===false){
             searchMovieDataArr.push(
-                <div className={styles.movieComponent}>
-                    <img id="movie-poster" className={styles.moviePoster}
-                        src={searchMoviePoster[i]}
-                        onClick={(e)=>{navigate(`/movie-information/${searchMovieId[i]}`)}}
-                    ></img>
-                    <h3 id="movie-title" className={styles.movieTitle}>{searchMovieTitle[i]}</h3>
-                </div>
+                <h3>조건에 맞는 영화를 찾을 수 없습니다.</h3>
             )
         }
         return searchMovieDataArr;
@@ -68,9 +89,9 @@ const MovieSearch=()=>{
             </div>
 
             <div className={styles.searchBox}>
-                <form method="post" action="moviesearch.php">
+                <form method="post">
                     <select onChange={(e)=>{setSearchKeyword(e.target.value)}} name="movie_search" className={styles.searchBox1}>
-                        <option value="title" selected>제목</option>
+                        <option value="title">제목</option>
                         <option value="person">감독 및 배우</option>
 
                     </select>

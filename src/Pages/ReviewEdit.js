@@ -36,7 +36,7 @@ const ReviewEdit=()=>{
         })
         .then((response)=>{
             if(response.status===200){
-                alert("리뷰 수정 성공");
+                alert("리뷰를 수정했습니다.");
                 navigate("/my-page");
             }
         })

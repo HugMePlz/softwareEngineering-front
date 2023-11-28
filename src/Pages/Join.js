@@ -38,7 +38,7 @@ const Join=()=>{
       })
       .then((response)=>{
         if(response.status===200){
-          alert("회원가입 성공");
+          alert("회원가입에 성공했습니다.");
           return navigate("/login");
         }
       })

@@ -144,7 +144,7 @@ const MyPageEdit=()=>{
         })
         .then((response)=>{
             if(response.status===200){
-                alert("회원 정보 변경 성공");
+                alert("회원 정보를 변경했습니다.");
                 return navigate("/my-page");
             }
         })
