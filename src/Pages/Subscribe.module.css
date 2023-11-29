@@ -1,4 +1,4 @@
-.communityBody {
+.subscribeBody {
     background-color: #212020;
     background-repeat: no-repeat;
     background-position: center center;
@@ -14,22 +14,6 @@
     position: absolute;
     top: 40px;
     left: 60px;
-}
-
-.communityNavigation {
-    position: absolute;
-    top: 56px;
-    left: 300px;
-    display: flex;
-}
-
-.communityNavigation button{ 
-    margin-left: 20px;
-    border: none;
-    background-color: transparent;
-    font-size: 25px;
-    color: #b1adad; 
-    font-weight: bold;
 }
 
 .searchMovie {
@@ -59,14 +43,14 @@
     font-weight: bold;
 }
 
-.communityBottom {
+.subscribeBottom {
     position: absolute; 
     top: 150px;
     left: 65px;
     color: #b1adad;
 }
 
-.communityBottom h1{
+.subsribeBottom h1{
     color: #ffffff;
 }
 
@@ -109,7 +93,7 @@
     line-height: 2;
     color: #ffffff;
 }
-.communityBody h2{
+.subscribeBody h2{
     color: #ffffff;
 }
 
@@ -118,23 +102,23 @@
     font-size: 20px;
 }
 
-.communityBody::-webkit-scrollbar {
+.subscribeBody::-webkit-scrollbar {
 	width: 10px;  /*스크롤바 너비 */
     height: 10px;
 }
 
 /* 스크롤바 막대 꾸미기 */
-.communityBody::-webkit-scrollbar-thumb {
+.subscribeBody::-webkit-scrollbar-thumb {
     height: 30%; /*스크롤바 길이 */
     background: #b1adad; /*스크롤바 색상*/
     border-radius: 10px;
 }
 
 /* 스크롤바 트랙 꾸미기 */
-.communityBody::-webkit-scrollbar-track {
+.subscribeBody::-webkit-scrollbar-track {
 	background: #212020;
 }
 
-.communityBody::-webkit-scrollbar-corner {
+.subscribeBody::-webkit-scrollbar-corner {
 	background: #212020;
 }

@@ -17,7 +17,7 @@ const MyPageEdit=()=>{
         navigate("/");
     }
 
-    const [profilePath, setProfilePath]=useState("");
+    const [profilePath, setProfilePath]=useState("1");
     const [name, setName]=useState("");
     const [nickname, setNickname]=useState("");
     const [userId, setUserId]=useState("");

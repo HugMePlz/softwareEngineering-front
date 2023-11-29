@@ -183,17 +183,20 @@ const MyPage=()=>{
     }
 
     const displayReviewRating=(movieRating)=>{
-        if(movieRating===1){
-            return "★";
+        if(movieRating===0){
+            return "☆☆☆☆☆";
+        }
+        else if(movieRating===1){
+            return "★☆☆☆☆";
         }
         else if(movieRating===2){
-            return "★★";
+            return "★★☆☆☆";
         }
         else if(movieRating===3){
-            return "★★★";
+            return "★★★☆☆";
         }
         else if(movieRating===4){
-            return "★★★★";
+            return "★★★★☆";
         }
         else if(movieRating===5){
             return "★★★★★";

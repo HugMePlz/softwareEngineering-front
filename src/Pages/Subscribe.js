@@ -1,9 +1,9 @@
-import styles from './Community.module.css';
+import styles from './Subscribe.module.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Community=()=>{
+const Subscribe=()=>{
     const navigate=useNavigate();
     const goToMain=()=>{
         navigate("/main");
@@ -11,15 +11,11 @@ const Community=()=>{
     const goToUserSearch=()=>{
         navigate("/user-search")
     }
-    const goToSubscribe=()=>[
-        navigate("/subsribe")
-    ]
     const logout=()=>{
         localStorage.removeItem('authorization');
         alert("로그아웃 성공");
         navigate("/");
     }
-    
 
     const [profilePath, setProfilePath]=useState([]);
     const [nickname, setNickname]=useState([]);
@@ -27,7 +23,7 @@ const Community=()=>{
 
     useEffect(()=>{
         axios
-        .get("/api/members/search", {
+        .get("/api/follow/followers", {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('authorization') || ''}`,
             },
@@ -93,13 +89,9 @@ const Community=()=>{
     }
 
     return(
-        <body className={styles.communityBody}>
+        <body className={styles.subscribeBody}>
             <div className={styles.mainLogo}>
                 <img src='img/main_logo.PNG' onClick={goToMain} alt='로고 이미지'></img>
-            </div>
-
-            <div className={styles.communityNavigation}>
-                <button onClick={goToSubscribe}>구독</button>
             </div>
 
             <div className={styles.searchMovie}>
@@ -111,7 +103,7 @@ const Community=()=>{
                 <button onClick={logout}>로그아웃</button>
             </div>
 
-            <div className={styles.communityBottom}>
+            <div className={styles.subscribeBottom}>
                 <h2>커뮤니티</h2>
                 <div className={styles.userContainer}>
                     {displayUserData()}
@@ -121,4 +113,4 @@ const Community=()=>{
     );
 }
 
-export default Community;
+export default Subscribe;

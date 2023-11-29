@@ -14,6 +14,7 @@ import Filmography from './Pages/Filmography';
 import Genre from './Pages/Genre';
 import MyPageEdit from './Pages/MyPageEdit';
 import ReviewEdit from './Pages/ReviewEdit';
+import Subscribe from './Pages/Subscribe';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/my-page-edit" element={<MyPageEdit/>}/>
         <Route path="/review-edit/:reviewId" element={<ReviewEdit/>}/>
         <Route path="/community" element={<Community/>}/>
+        <Route path="/subsribe" element={<Subscribe/>}/>
         <Route path="/user-page/:userId" element={<Userpage/>}/>
         <Route path="/user-search" element={<UserSearch/>}/>
       </Routes>

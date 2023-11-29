@@ -155,38 +155,46 @@ const MovieInformation=()=>{
     }
 
     const onSubmit=()=>{
-        axios
-        .post(`/api/reviews/${id}`,{
-            reviewRating: reviewRating,
-            comment: comment
-        },{
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('authorization') || ''}`,
-            },
-        })
-        .then((response)=>{
-            if(response.status===200){
-                alert("리뷰 작성에 성공했습니다.");
-                window.location.reload();
+        if(comment.length>100){
+            alert('코멘트의 글자 수가 초과되었습니다. 100자 이내로 코멘트를 작성해보세요.');
+        }
+        else{
+            axios
+            .post(`/api/reviews/${id}`,{
+                reviewRating: reviewRating,
+                comment: comment
+            },{
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('authorization') || ''}`,
+                },
+            })
+            .then((response)=>{
+                if(response.status===200){
+                    alert("리뷰 작성에 성공했습니다.");
+                    window.location.reload();
+                }
+            })
+            .catch((error)=>{
+                console.log(error);
+            })
             }
-        })
-        .catch((error)=>{
-            console.log(error);
-        })
     }
 
     const displayReviewRating=(movieRating)=>{
-        if(movieRating===1){
-            return "★";
+        if(movieRating===0){
+            return "☆☆☆☆☆";
+        }
+        else if(movieRating===1){
+            return "★☆☆☆☆";
         }
         else if(movieRating===2){
-            return "★★";
+            return "★★☆☆☆";
         }
         else if(movieRating===3){
-            return "★★★";
+            return "★★★☆☆";
         }
         else if(movieRating===4){
-            return "★★★★";
+            return "★★★★☆";
         }
         else if(movieRating===5){
             return "★★★★★";
@@ -198,7 +206,7 @@ const MovieInformation=()=>{
         if(movieReviewWriter.length===0){
             displayReviewDataArr.push(
                 <div className={styles.firstreview}>
-                <h2>첫 리뷰를 달아보세요.</h2>
+                    <h2>첫 리뷰를 달아보세요.</h2>
                 </div>
             )
         }
@@ -319,16 +327,17 @@ const MovieInformation=()=>{
                         <div className={styles.starpointBox}>
                             <select onChange={(e)=>{setReviewRating(e.target.value)}}>
                                 <option value="" disabled selected>별점</option>
-                                <option value="1">★</option>
-                                <option value="2">★★</option>
-                                <option value="3">★★★</option>
-                                <option value="4">★★★★</option>
+                                <option value="0">☆☆☆☆☆</option>
+                                <option value="1">★☆☆☆☆</option>
+                                <option value="2">★★☆☆☆</option>
+                                <option value="3">★★★☆☆</option>
+                                <option value="4">★★★★☆</option>
                                 <option value="5">★★★★★</option>
                             </select>
                         </div>
                     </div>
                     <button type="submit" onClick={onSubmit}>등록</button>
-                    <textarea onChange={(e)=>{setComment(e.target.value)}} placeholder='코멘트를 작성해보세요...'></textarea>
+                    <textarea onChange={(e)=>{setComment(e.target.value)}} placeholder='100자 이내로 코멘트를 작성해보세요...'></textarea>
                 </div>
                 <div className={styles.reviewCollection}>
                     <h3 id="header">해당 영화에 작성된 리뷰 둘러보기</h3>
