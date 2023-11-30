@@ -17,6 +17,10 @@
     left: 60px;
 }
 
+.mainLogo:hover{
+  cursor: pointer;
+}
+
 .signupContainer {
   position: absolute;
   text-align: center;
@@ -155,6 +159,10 @@
   border-radius: 5px;
   color: white;
   margin-bottom: 50px;
+}
+
+.buttonJoin:hover{
+  cursor: pointer;
 }
 
 /*스크롤바 커스텀*/

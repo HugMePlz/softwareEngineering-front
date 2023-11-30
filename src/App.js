@@ -32,7 +32,7 @@ function App() {
         <Route path="/my-page-edit" element={<MyPageEdit/>}/>
         <Route path="/review-edit/:reviewId" element={<ReviewEdit/>}/>
         <Route path="/community" element={<Community/>}/>
-        <Route path="/subsribe" element={<Subscribe/>}/>
+        <Route path="/subscribe" element={<Subscribe/>}/>
         <Route path="/user-page/:userId" element={<Userpage/>}/>
         <Route path="/user-search" element={<UserSearch/>}/>
       </Routes>

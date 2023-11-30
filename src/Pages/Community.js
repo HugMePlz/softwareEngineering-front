@@ -12,7 +12,7 @@ const Community=()=>{
         navigate("/user-search")
     }
     const goToSubscribe=()=>[
-        navigate("/subsribe")
+        navigate("/subscribe")
     ]
     const logout=()=>{
         localStorage.removeItem('authorization');

@@ -43,6 +43,18 @@
     font-weight: bold;
 }
 
+.mainLogo:hover{
+    cursor: pointer;
+}
+
+.searchMovie button:hover{
+    cursor: pointer;
+}
+
+.buttonLogout button:hover{
+    cursor: pointer;
+}
+
 .subscribeBottom {
     position: absolute; 
     top: 150px;
@@ -75,7 +87,10 @@
     width: 130px;
     margin: 20px;
     border-radius: 50%;
-    
+}
+
+.user img:hover{
+    cursor: pointer;
 }
 
 .userInformation{

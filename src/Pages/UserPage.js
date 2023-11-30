@@ -164,24 +164,24 @@ const Userpage=()=>{
   }
 
   const displayReviewRating=(movieRating)=>{
-    if(movieRating===0){
-        return "☆☆☆☆☆";
-    }
-    else if(movieRating===1){
-        return "★☆☆☆☆";
-    }
-    else if(movieRating===2){
-        return "★★☆☆☆";
-    }
-    else if(movieRating===3){
-        return "★★★☆☆";
-    }
-    else if(movieRating===4){
-        return "★★★★☆";
-    }
-    else if(movieRating===5){
-        return "★★★★★";
-    }
+        if(movieRating===0){
+          return "⚝ ⚝ ⚝ ⚝ ⚝";
+      }
+      else if(movieRating===1){
+          return "⭐ ⚝ ⚝ ⚝ ⚝";
+      }
+      else if(movieRating===2){
+          return "⭐⭐ ⚝ ⚝ ⚝";
+      }
+      else if(movieRating===3){
+          return "⭐⭐⭐ ⚝ ⚝";
+      }
+      else if(movieRating===4){
+          return "⭐⭐⭐⭐ ⚝";
+      }
+      else if(movieRating===5){
+          return "⭐⭐⭐⭐⭐";
+      }
 }
 
   const displayReviewData=()=>{
@@ -195,9 +195,12 @@ const Userpage=()=>{
         for(let i=0;i<reviewMovieTitle.length;i++){
             displayReviewDataArr.push(
                 <div class={styles.review}>
-                    <p onClick={(e)=>{navigate(`/movie-information/${reviewMovieId[i]}`)}}>{reviewMovieTitle[i]}</p>
-                    <p>{displayReviewRating(reviewRating[i])}</p>
-                    <p>{reviewComment[i]}</p>
+                    <h3 className={styles.mypageReview} >
+                        <span className={styles.mypageMovie} onClick={(e)=>{navigate(`/movie-information/${reviewMovieId[i]}`)}}>{reviewMovieTitle[i]}</span>
+                        <span className={styles.bar}> | </span>
+                        <span className={styles.rating}>{displayReviewRating(reviewRating[i])}</span>
+                        </h3>
+                        <p>{reviewComment[i]}</p>
                 </div>
             )
         }

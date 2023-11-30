@@ -120,7 +120,7 @@ const MyPageEdit=()=>{
                     selectedGenres.push(10752);
                 }
                 else if(response.data.data[i]==="WESTERN"){
-                    selectedGenres.push(32);
+                    selectedGenres.push(37);
                 }
             }
             setGenres(selectedGenres);
@@ -335,7 +335,7 @@ const MyPageEdit=()=>{
                            <span>WAR</span>
                            </div>
                            <div className='ch19'>
-                           <input type='checkbox' value="32" checked={genres.includes(32)}
+                           <input type='checkbox' value="37" checked={genres.includes(37)}
                                 onChange={handleCheckboxChange}/>
                            <span>WESTERN</span>
                            </div>

@@ -104,7 +104,7 @@ const Subscribe=()=>{
             </div>
 
             <div className={styles.subscribeBottom}>
-                <h2>커뮤니티</h2>
+                <h2>내가 구독한 사용자</h2>
                 <div className={styles.userContainer}>
                     {displayUserData()}
                 </div>

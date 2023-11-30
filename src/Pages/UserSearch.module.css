@@ -31,6 +31,18 @@
     font-weight: bold;
 }
 
+.mainLogo:hover{
+    cursor: pointer;
+}
+
+.searchBox button:hover{
+    cursor: pointer;
+}
+
+.buttonLogout button:hover{
+    cursor: pointer;
+}
+
  /*검색창 다시 수정*/
 .searchBox {
     display: flex;
@@ -106,6 +118,10 @@
     margin: 20px;
     border-radius: 50%;
     
+}
+
+.user img:hover{
+    cursor: pointer;
 }
 
 .userInformation{

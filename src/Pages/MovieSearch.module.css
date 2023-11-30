@@ -17,6 +17,10 @@
   left: 60px;
 }
 
+.searchBox button{
+  cursor: pointer;
+}
+
 .buttonLogout {
   position: absolute;
   top: 13px;
@@ -30,6 +34,16 @@
   font-size: 13px;
   color: #b1adad; 
   font-weight: bold;
+}
+
+.mainLogo:hover{
+  cursor: pointer;
+}
+
+
+
+.buttonLogout button:hover{
+  cursor: pointer;
 }
 /*검색창 다시 수정*/
 .searchBox {
@@ -102,6 +116,10 @@
 .moviePoster{
   width: 210px;
   height: 300px;
+}
+
+.moviePoster{
+  cursor: pointer;
 }
 
 .movieTitle {

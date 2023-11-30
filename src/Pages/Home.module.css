@@ -17,6 +17,9 @@
     left: 60px;
 }
   
+.mainLogo:hover{
+    cursor: pointer;
+}
 .content {
     position: absolute;
     text-align: center;

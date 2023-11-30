@@ -51,6 +51,18 @@ hr {
     font-weight: bold;
 }
 
+.mainLogo:hover{
+    cursor: pointer;
+}
+
+.searchMovie button:hover{
+    cursor: pointer;
+}
+
+.buttonLogout button:hover{
+    cursor: pointer;
+}
+
 .userPageBottom{
     position: absolute;
     top:15%;
@@ -123,6 +135,10 @@ hr {
     margin-bottom: 20px;
 }
 
+.subscribeButtonContainer button:hover{
+    cursor: pointer;
+}
+
 .userPageBody h2{
     color: #ffffff;
 }
@@ -144,9 +160,20 @@ hr {
     
 }
 
+.review h3{
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
 .review p{
     resize: vertical;
     padding: 10px;
+}
+
+.mypageMovie:hover{
+    cursor: pointer;
+    /*color: #f62617;*/
+    text-decoration: underline;
 }
 
 .review{

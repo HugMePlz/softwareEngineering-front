@@ -44,6 +44,18 @@
     font-weight: bold;
 }
 
+.mainLogo:hover{
+    cursor: pointer;
+}
+
+.searchMovie button:hover{
+    cursor: pointer;
+}
+
+.buttonLogout button:hover{
+    cursor: pointer;
+}
+
 .myPageEditBottom{
     position: absolute;
     top:15%;
@@ -165,6 +177,10 @@
     border-radius: 5px;
     color: #ffffff;
     font-weight: 600;
+}
+
+.submitButtonContainer button:hover{
+    cursor: pointer;
 }
 
 .myPageBody h2{

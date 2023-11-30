@@ -32,6 +32,10 @@
     font-weight: bold;
 }
 
+.communityNavigation button{ 
+    cursor: pointer;
+}
+
 .searchMovie {
     position: absolute;
     top: 65px;
@@ -57,6 +61,18 @@
     font-size: 13px;
     color: #b1adad; 
     font-weight: bold;
+}
+
+.mainLogo:hover{
+    cursor: pointer;
+}
+
+.searchMovie button:hover{
+    cursor: pointer;
+}
+
+.buttonLogout button:hover{
+    cursor: pointer;
 }
 
 .communityBottom {
@@ -92,6 +108,10 @@
     margin: 20px;
     border-radius: 50%;
     
+}
+
+.user img:hover{
+    cursor: pointer;
 }
 
 .userInformation{

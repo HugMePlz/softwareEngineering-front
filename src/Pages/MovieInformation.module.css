@@ -44,6 +44,17 @@
     font-weight: bold;
 }
 
+.mainLogo:hover{
+    cursor: pointer;
+}
+
+.searchMovie button:hover{
+    cursor: pointer;
+}
+
+.buttonLogout button:hover{
+    cursor: pointer;
+}
 .movieInformationBottom{
     position: absolute;
     left: 50%;
@@ -121,6 +132,12 @@
     border: none;
     border-radius:15px;
     margin-right: 10px;
+    text-decoration: underline;
+}
+
+.component button:hover {
+    cursor: pointer;
+    background-color: #222fde
 }
 
 .summary{
@@ -184,6 +201,10 @@
     color: #ffffff;
 }
 
+.reviewWrite button:hover {
+    cursor: pointer;
+}
+
 .starpointWrap{
     display:inline-block;
     margin-bottom: 20px;
@@ -194,6 +215,10 @@
     font-size: 15px;
     color: #b1adad;
     border: none;
+}
+
+.starpointBox select:hover{
+    cursor: pointer;
 }
 
 .reviewCollection{
@@ -225,8 +250,47 @@
     resize: vertical;
 }
 
+.aReview h3{
+    padding-top: 10px;
+    padding-left: 10px;
+    resize: vertical;
+    color: #b1adad;
+}
+
+.aReview input{
+    display: inline-block;
+    float: right;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    border-radius: 8px;
+    border: 1px solid #999;
+    appearance: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.aReview input:checked {
+    background-color: #fbcc0c;
+    border: none;
+}
+
+.userId { 
+    border-radius: 10px;
+    color: #ffffff;
+
+}
+
+.userId:hover {
+    cursor: pointer;
+    /*color: #f62617;*/
+    text-decoration: underline;
+    /*color: #fbcc0c;*/
+}
+
 .aReview p{
-    padding: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
     resize: vertical;
 }
 
@@ -281,4 +345,3 @@
 .movieInformationBody::-webkit-scrollbar-corner {
 	background: #212020;
 }
-

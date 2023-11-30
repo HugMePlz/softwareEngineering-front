@@ -74,7 +74,7 @@ const Main=()=>{
         .catch((error)=>{
             if(error.response.status===403){
                 localStorage.removeItem('authorization');
-                return navigate("/");
+                navigate("/login")
             }
         })
 
@@ -102,7 +102,7 @@ const Main=()=>{
         .catch((error)=>{
             if(error.response.status===403){
                 localStorage.removeItem('authorization');
-                return navigate("/");
+                navigate("/login")
             }
         })
 
@@ -130,7 +130,7 @@ const Main=()=>{
         .catch((error)=>{
             if(error.response.status===403){
                 localStorage.removeItem('authorization');
-                return navigate("/");
+                navigate("/login")
             }
         })
 
@@ -158,7 +158,7 @@ const Main=()=>{
         .catch((error)=>{
             if(error.response.status===403){
                 localStorage.removeItem('authorization');
-                return navigate("/");
+                navigate("/login")
             }
         })
 
@@ -186,7 +186,7 @@ const Main=()=>{
         .catch((error)=>{
             if(error.response.status===403){
                 localStorage.removeItem('authorization');
-                return navigate("/");
+                navigate("/login")
             }
         })
 
@@ -220,10 +220,9 @@ const Main=()=>{
             }
         })
         .catch((error)=>{
-            console.log(error);
             if(error.response.status===403){
                 localStorage.removeItem('authorization');
-                return navigate("/");
+                navigate("/login")
             }
         })
 
@@ -257,7 +256,7 @@ const Main=()=>{
         .catch((error)=>{
             if(error.response.status===403){
                 localStorage.removeItem('authorization');
-                return navigate("/");
+                navigate("/login")
             }
         })
     },[]);
@@ -286,9 +285,8 @@ const Main=()=>{
           })
           .catch((error) => {
             if (error.response.status === 403) {
-              alert("403");
-              localStorage.removeItem('authorization');
-              return navigate("/login");
+                localStorage.removeItem('authorization');
+                navigate("/login")
             }
           });
     };

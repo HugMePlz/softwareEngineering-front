@@ -44,6 +44,18 @@
     font-weight: bold;
 }
 
+.mainLogo:hover{
+    cursor: pointer;
+}
+
+.searchMovie button:hover{
+    cursor: pointer;
+}
+
+.buttonLogout button:hover{
+    cursor: pointer;
+}
+
 .filmographyBottom h1 {
     color: #fff; 
     position: absolute; 
@@ -70,6 +82,10 @@
 .moviePoster {
     width: 210px;
     height: 300px;
+}
+
+.moviePoster:hover{
+    cursor: pointer;
 }
 
 .movieTitle {

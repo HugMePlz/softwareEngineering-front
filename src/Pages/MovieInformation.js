@@ -33,7 +33,9 @@ const MovieInformation=()=>{
     const [movieRating, setMovieRating]=useState("");
     const [movieOverview, setMovieOverview]=useState("");
     const [movieTrailerPath, setMovieTrailerPath]=useState("");
+    const [movieReviewId, setMovieReviewId]=useState([]);
     const [movieReviewWriter, setMovieReviewWriter]=useState([]);
+    const [moviereviewLike, setMovieReviewLike]=useState([]);
     const [movieReviewRating, setMovieReviewRating]=useState([]);
     const [movieReviewComment, setMovieReviewComment]=useState([]);
 
@@ -42,6 +44,8 @@ const MovieInformation=()=>{
     const [comment, setComment]=useState("");
 
     const [bookmark, setBookmark]=useState();
+
+    const [myUserId, setMyUserId]=useState("");
 
     useEffect(()=>{
         axios
@@ -90,21 +94,40 @@ const MovieInformation=()=>{
             },
         })
         .then((response)=>{
+            let reviewId=[];
             let userId=[];
             let reviewRating=[];
+            let reviewLike=[];
             let comment=[];
             for(let i=0;i<response.data.data.length;i++){
+                reviewId.push(response.data.data[i].id);
                 userId.push(response.data.data[i].userid);
                 reviewRating.push(response.data.data[i].reviewRating);
+                axios
+                    .get(`/api/like/status/${response.data.data[i].id}`,{
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem('authorization') || ''}`,
+                        },
+                    })
+                    .then((response)=>{
+                        console.log(response.data.data);
+                        reviewLike.push(response.data.data);
+                        console.log(reviewLike);
+                        setMovieReviewLike(reviewLike);
+                    })
+                    .catch((error)=>{
+                        console.log(error);
+                    })
                 comment.push(response.data.data[i].comment);
             }
+            setMovieReviewId(reviewId);
             setMovieReviewWriter(userId);
             setMovieReviewRating(reviewRating);
             setMovieReviewComment(comment);
         })
         .catch((error)=>{
             console.log(error);
-        })
+        })        
     }, [id])
 
     useEffect(()=>{
@@ -121,6 +144,20 @@ const MovieInformation=()=>{
             console.log(error);
         })
     },[id]);
+
+    useEffect(()=>{
+        axios("/api/members",{
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('authorization') || ''}`,
+            },
+        })
+        .then((response)=>{
+            setMyUserId(response.data.data.userId);
+        })
+        .catch((error)=>{
+            console.log(error);
+        })
+    },[]);
     
     const displayMovieDirector=()=>{
         return(
@@ -158,6 +195,9 @@ const MovieInformation=()=>{
         if(comment.length>100){
             alert('코멘트의 글자 수가 초과되었습니다. 100자 이내로 코멘트를 작성해보세요.');
         }
+        else if(reviewRating===""){
+            alert('별점을 등록해주세요');
+        }
         else{
             axios
             .post(`/api/reviews/${id}`,{
@@ -177,27 +217,27 @@ const MovieInformation=()=>{
             .catch((error)=>{
                 console.log(error);
             })
-            }
+        }
     }
 
     const displayReviewRating=(movieRating)=>{
         if(movieRating===0){
-            return "☆☆☆☆☆";
+            return "  ⚝ ⚝ ⚝ ⚝ ⚝";
         }
         else if(movieRating===1){
-            return "★☆☆☆☆";
+            return "⭐ ⚝ ⚝ ⚝ ⚝";
         }
         else if(movieRating===2){
-            return "★★☆☆☆";
+            return "⭐⭐ ⚝ ⚝ ⚝";
         }
         else if(movieRating===3){
-            return "★★★☆☆";
+            return "⭐⭐⭐ ⚝ ⚝";
         }
         else if(movieRating===4){
-            return "★★★★☆";
+            return "⭐⭐⭐⭐ ⚝";
         }
         else if(movieRating===5){
-            return "★★★★★";
+            return "⭐⭐⭐⭐⭐";
         }
     }
 
@@ -212,13 +252,36 @@ const MovieInformation=()=>{
         }
         else{
             for(let i=0;i<movieReviewWriter.length;i++){
-                displayReviewDataArr.push(
-                    <div className={styles.aReview}>
-                        <p className={styles.aReviewWriterId} onClick={(e) => navigate(`/user-page/${movieReviewWriter[i]}`)}>@{movieReviewWriter[i]}</p>
-                        <p className={styles.aReviewRating}>{displayReviewRating(movieReviewRating[i])}</p>
-                        <p className={styles.aReviewComment}>{movieReviewComment[i]}</p>
-                    </div>
-                )
+                if(movieReviewWriter[i]===myUserId){
+                    displayReviewDataArr.push(
+                        <div className={styles.aReview}>
+                            <h3 className={styles.aReviewWriterId}>
+                                <span className={styles.userId}>
+                                    @{movieReviewWriter[i]}  
+                                </span>
+                                <span className={styles.bar}>   |   </span>
+                                <span className={styles.rating}>{displayReviewRating(movieReviewRating[i])}</span>
+                            </h3>
+                            <p className={styles.aReviewComment}>{movieReviewComment[i]}</p>
+                        </div>
+                    )
+                }
+                else{
+                    console.log(moviereviewLike[i]);
+                    displayReviewDataArr.push(
+                        <div className={styles.aReview}>
+                            <h3 className={styles.aReviewWriterIdAndRating}>
+                                <span className={styles.userId} onClick={(e) => navigate(`/user-page/${movieReviewWriter[i]}`)}>
+                                    @{movieReviewWriter[i]}  
+                                </span>
+                                <span className={styles.bar}> | </span>
+                                <span className={styles.rating}>{displayReviewRating(movieReviewRating[i])}</span>
+                                <input type='checkbox' checked={moviereviewLike[i]} onClick={(e)=>{handleReviewLike(moviereviewLike[i], i)}}></input>
+                            </h3>
+                            <p className={styles.aReviewComment}>{movieReviewComment[i]}</p>
+                        </div>
+                    )
+                }
             }
         }
         return displayReviewDataArr;
@@ -261,6 +324,43 @@ const MovieInformation=()=>{
         }
     }
 
+    const handleReviewLike=(reviewLike, i)=>{
+        if(reviewLike===true){
+            axios
+            .delete(`/api/like/${movieReviewId[i]}`,{
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('authorization') || ''}`,
+                },
+            })
+            .then((response)=>{
+                if(response.status===200){
+                    alert("리뷰에 공감을 해제했습니다.");
+                    window.location.reload();
+                }
+            })
+            .catch((error)=>{
+                console.log(error);
+            })
+        }
+        else{
+            axios
+            .post(`/api/like/${movieReviewId[i]}`,{},{
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('authorization') || ''}`,
+                },
+            })
+            .then((response)=>{
+                if(response.status===200){
+                    alert("리뷰에 공감을 등록했습니다.");
+                    window.location.reload();
+                }
+            })
+            .catch((error)=>{
+                console.log(error);
+            })
+        }
+    }
+
     return(
         <body className={styles.movieInformationBody}>
         
@@ -284,9 +384,7 @@ const MovieInformation=()=>{
                 <div className={styles.information}>
                     <h1 id="title">{movieTitle}</h1>
                     <div className={styles.heart}>
-                        
-                            <input type='checkbox' className={styles.heart_checkbox} checked={bookmark} onClick={handleBookmark}></input>
-                        
+                        <input type='checkbox' className={styles.heart_checkbox} checked={bookmark} onClick={handleBookmark}></input>
                     </div>
                     <div className={styles.component}>
                         <h3 id="header">개봉일</h3>
@@ -327,12 +425,12 @@ const MovieInformation=()=>{
                         <div className={styles.starpointBox}>
                             <select onChange={(e)=>{setReviewRating(e.target.value)}}>
                                 <option value="" disabled selected>별점</option>
-                                <option value="0">☆☆☆☆☆</option>
-                                <option value="1">★☆☆☆☆</option>
-                                <option value="2">★★☆☆☆</option>
-                                <option value="3">★★★☆☆</option>
-                                <option value="4">★★★★☆</option>
-                                <option value="5">★★★★★</option>
+                                <option value="0">⚝</option>
+                                <option value="1">⭐</option>
+                                <option value="2">⭐⭐ </option>
+                                <option value="3">⭐⭐⭐</option>
+                                <option value="4">⭐⭐⭐⭐</option>
+                                <option value="5">⭐⭐⭐⭐⭐</option>
                             </select>
                         </div>
                     </div>

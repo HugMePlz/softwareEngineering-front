@@ -184,22 +184,22 @@ const MyPage=()=>{
 
     const displayReviewRating=(movieRating)=>{
         if(movieRating===0){
-            return "☆☆☆☆☆";
+            return "⚝ ⚝ ⚝ ⚝ ⚝";
         }
         else if(movieRating===1){
-            return "★☆☆☆☆";
+            return "⭐ ⚝ ⚝ ⚝ ⚝";
         }
         else if(movieRating===2){
-            return "★★☆☆☆";
+            return "⭐⭐ ⚝ ⚝ ⚝";
         }
         else if(movieRating===3){
-            return "★★★☆☆";
+            return "⭐⭐⭐ ⚝ ⚝";
         }
         else if(movieRating===4){
-            return "★★★★☆";
+            return "⭐⭐⭐⭐ ⚝";
         }
         else if(movieRating===5){
-            return "★★★★★";
+            return "⭐⭐⭐⭐⭐";
         }
     }
 
@@ -215,10 +215,14 @@ const MyPage=()=>{
                 displayReviewDataArr.push(
                     <div class={styles.review}>
                         <button id="revisebtn" onClick={(e)=>navigate(`/review-edit/${reviewId[i]}`)}>수정</button>
-                        <button id="deletebtn" onClick={(e)=>deleteReveiw(`${reviewId[i]}`)}>삭제</button>
-                        <p onClick={(e)=>{navigate(`/movie-information/${reviewMovieId[i]}`)}}>{reviewMovieTitle[i]}</p>
-                        <p>{displayReviewRating(reviewRating[i])}</p>
+                        <button id="deletebtn" onClick={(e)=>deleteReveiw(`${reviewId[i]}`)}>삭제</button>  
+                        <h3 className={styles.mypageReview} >
+                        <span className={styles.mypageMovie} onClick={(e)=>{navigate(`/movie-information/${reviewMovieId[i]}`)}}>{reviewMovieTitle[i]}</span>
+                        <span className={styles.bar}> | </span>
+                        <span className={styles.rating}>{displayReviewRating(reviewRating[i])}</span>
+                        </h3>
                         <p>{reviewComment[i]}</p>
+                        
                     </div>
                 )
             }

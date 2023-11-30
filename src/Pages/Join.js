@@ -7,8 +7,8 @@ import moment from 'moment';
 
 const Join=()=>{
   const navigate=useNavigate();
-  const goToLogin=()=>{
-    navigate("/login");
+  const goToHome=()=>{
+    navigate("/");
   }
   
   const [userId, setUserId]=useState("");
@@ -59,7 +59,7 @@ const Join=()=>{
     <div className={styles.joinBody}>
 
       <div className={styles.mainLogo}>
-        <img src='img/main_logo.PNG' onClick={goToLogin} alt='로고 이미지'></img>
+        <img src='img/main_logo.PNG' onClick={goToHome} alt='로고 이미지'></img>
       </div>
         <div className={styles.signupContainer}>
         <h1>회원가입</h1>

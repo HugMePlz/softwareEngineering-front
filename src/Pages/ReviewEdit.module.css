@@ -44,6 +44,18 @@
     font-weight: bold;
 }
 
+
+.mainLogo:hover{
+    cursor: pointer;
+}
+
+.searchMovie button:hover{
+    cursor: pointer;
+}
+
+.buttonLogout button:hover{
+    cursor: pointer;
+}
 .reviewEditBottom{
     position: absolute;
     left: 50%;
@@ -79,6 +91,10 @@
     border: none;
     border-radius: 5px;
     color: #ffffff;
+}
+
+.reviewWrite button:hover{
+    cursor: pointer;
 }
 
 .starpointWrap{

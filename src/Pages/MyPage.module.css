@@ -44,6 +44,18 @@
     font-weight: bold;
 }
 
+.mainLogo:hover{
+    cursor: pointer;
+}
+
+.searchMovie button:hover{
+    cursor: pointer;
+}
+
+.buttonLogout button:hover{
+    cursor: pointer;
+}
+
 .myPageBottom{
     position: absolute;
     top:15%;
@@ -98,6 +110,10 @@
     font-weight: 600;
 }
 
+.label4 p{
+    
+}
+
 .value1 p{
     width: 250px;
     color: #ffffff;
@@ -121,8 +137,14 @@
     border: none;
     border-radius:15px;
     margin-right: 10px;
+    text-decoration: underline;
 }
 /*완료*/
+
+.value5 button:hover{
+    cursor: pointer;
+    background-color: #222fdeb4;
+}
 
 .editButtonContainer button{
     float: right;
@@ -147,12 +169,17 @@
 }
 
 .myReview{
-    width: 875px;
+    width: 895px;
     padding-top: 10px;
     padding-bottom: 50px;
     color: #ffffff;
     background-color: #212020;
     
+}
+
+.review h3{
+    padding-top: 10px;
+    padding-left: 10px;
 }
 
 .reviewSpace{
@@ -161,8 +188,15 @@
     padding-left:10px;
     overflow-y: scroll;
     border: none;
-    
 }
+
+
+.mypageMovie:hover{
+    cursor: pointer;
+    /*color: #f62617;*/
+    text-decoration: underline;
+}
+
 
 .reviewSpace::-webkit-scrollbar {
     width: 8px; 
@@ -176,7 +210,6 @@
 .reviewSpace::-webkit-scrollbar-track {
     background-color: #212020;
 }
-
 
 .review{
     
@@ -205,7 +238,14 @@
     width:50px;
     margin-right: 10px;
     margin-top: 5px;
-    
+}
+
+.review button:hover{
+    cursor: pointer;
+}
+
+.editButtonContainer button:hover{
+    cursor: pointer;
 }
 
 .savedMovie{
@@ -230,7 +270,6 @@
     background-color: #212020;
 }
 
-
 .movieComponent {
     display: inline-block;
     text-align: center;
@@ -241,6 +280,10 @@
 .moviePoster{
     width: 200px;
     height: 300px;
+}
+
+.moviePoster:hover{
+    cursor: pointer;
 }
 
 .movieTitle {

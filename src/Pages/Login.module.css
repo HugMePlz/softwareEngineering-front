@@ -15,6 +15,10 @@
     top: 40px;
     left: 60px;
 }
+
+.mainLogo:hover{
+    cursor: pointer;;
+}
   
 .loginContainer {
     position: absolute;
@@ -54,6 +58,10 @@
     background-color: #222fde;
     font-size: 15px;
     font-weight: bold;
+}
+
+.loginInput button:hover{
+    cursor: pointer;
 }
   
 .loginInput input {

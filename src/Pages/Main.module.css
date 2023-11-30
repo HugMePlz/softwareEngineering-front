@@ -16,6 +16,18 @@
     left: 60px;
 }
 
+.mainLogo:hover{
+    cursor: pointer;
+}
+
+.searchMovie button:hover{
+    cursor: pointer;
+}
+
+.buttonLogout button:hover{
+    cursor: pointer;
+}
+
 .mainNavigation {
     position: absolute;
     top: 56px;
@@ -30,6 +42,10 @@
     font-size: 25px;
     color: #b1adad; 
     font-weight: bold;
+}
+
+.mainNavigation button:hover{
+    cursor: pointer;
 }
 
 .searchMovie {
@@ -78,6 +94,10 @@
     margin-left: 15px;
     font-size: 20px;
     border-radius: 5px;  
+}
+
+.genreBox select:hover{
+    cursor: pointer;
 }
 
 .genreBox button {
@@ -204,6 +224,10 @@
 .moviePoster{
     width: 200px;
     height: 300px;
+}
+
+.moviePoster {
+    cursor: pointer;
 }
 
 .movieTitle {
