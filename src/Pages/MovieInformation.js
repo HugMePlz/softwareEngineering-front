@@ -256,7 +256,7 @@ const MovieInformation=()=>{
                     displayReviewDataArr.push(
                         <div className={styles.aReview}>
                             <h3 className={styles.aReviewWriterId}>
-                                <span className={styles.userId}>
+                                <span className={styles.userId} onClick={(e)=>navigate("/my-page")}>
                                     @{movieReviewWriter[i]}  
                                 </span>
                                 <span className={styles.bar}>   |   </span>

@@ -26,7 +26,9 @@ const Userpage=()=>{
 
   const [follow, setFollow]=useState(false);
 
+  const [reviewId, setReviewId]=useState([]);
   const [reviewMovieId, setReviewMovieId]=useState([]);
+  const [reviewLike, setReviewLike]=useState([]);
   const [reviewMovieTitle, setReviewMovieTitle]=useState([]);
   const [reviewRating, setReviewRating]=useState([]);
   const [reviewComment, setReviewComment]=useState([]);
@@ -57,16 +59,35 @@ const Userpage=()=>{
     })
     .then((response)=>{
         if(response.status===200){
+                let reviewId=[];
                 let movieid=[];
+                let reviewLike=[];
                 let title=[];
                 let rating=[];
                 let comment=[];
                 for(let i=0;i<response.data.data.length;i++){
+                    reviewId.push(response.data.data[i].id);
                     movieid.push(response.data.data[i].movieid);
+                    axios
+                    .get(`/api/like/status/${response.data.data[i].id}`,{
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem('authorization') || ''}`,
+                        },
+                    })
+                    .then((response)=>{
+                        console.log(response.data.data);
+                        reviewLike.push(response.data.data);
+                        console.log(reviewLike);
+                        setReviewLike(reviewLike);
+                    })
+                    .catch((error)=>{
+                        console.log(error);
+                    })
                     title.push(response.data.data[i].movieName);
                     rating.push(response.data.data[i].reviewRating);
                     comment.push(response.data.data[i].comment);
                 }
+            setReviewId(reviewId);
             setReviewMovieId(movieid);
             setReviewMovieTitle(title);
             setReviewRating(rating);
@@ -199,14 +220,52 @@ const Userpage=()=>{
                         <span className={styles.mypageMovie} onClick={(e)=>{navigate(`/movie-information/${reviewMovieId[i]}`)}}>{reviewMovieTitle[i]}</span>
                         <span className={styles.bar}> | </span>
                         <span className={styles.rating}>{displayReviewRating(reviewRating[i])}</span>
-                        </h3>
-                        <p>{reviewComment[i]}</p>
+                        <input type='checkbox' checked={reviewLike[i]} onClick={(e)=>{handleReviewLike(reviewLike[i], i)}}></input>
+                    </h3>
+                    <p>{reviewComment[i]}</p>
                 </div>
             )
         }
     }
     return displayReviewDataArr;
   }
+
+  const handleReviewLike=(reviewLike, i)=>{
+        if(reviewLike===true){
+            axios
+            .delete(`/api/like/${reviewId[i]}`,{
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('authorization') || ''}`,
+                },
+            })
+            .then((response)=>{
+                if(response.status===200){
+                    alert("리뷰에 공감을 해제했습니다.");
+                    window.location.reload();
+                }
+            })
+            .catch((error)=>{
+                console.log(error);
+            })
+        }
+        else{
+            axios
+            .post(`/api/like/${reviewId[i]}`,{},{
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('authorization') || ''}`,
+                },
+            })
+            .then((response)=>{
+                if(response.status===200){
+                    alert("리뷰에 공감을 등록했습니다.");
+                    window.location.reload();
+                }
+            })
+            .catch((error)=>{
+                console.log(error);
+            })
+        }
+    }
 
   return (
     <body className={styles.userPageBody}>

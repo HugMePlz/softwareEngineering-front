@@ -74,7 +74,7 @@ const Main=()=>{
         .catch((error)=>{
             if(error.response.status===403){
                 localStorage.removeItem('authorization');
-                navigate("/login")
+                navigate("/login");
             }
         })
 
@@ -102,7 +102,7 @@ const Main=()=>{
         .catch((error)=>{
             if(error.response.status===403){
                 localStorage.removeItem('authorization');
-                navigate("/login")
+                navigate("/login");
             }
         })
 
@@ -130,7 +130,7 @@ const Main=()=>{
         .catch((error)=>{
             if(error.response.status===403){
                 localStorage.removeItem('authorization');
-                navigate("/login")
+                navigate("/login");
             }
         })
 
@@ -158,7 +158,7 @@ const Main=()=>{
         .catch((error)=>{
             if(error.response.status===403){
                 localStorage.removeItem('authorization');
-                navigate("/login")
+                navigate("/login");
             }
         })
 
@@ -186,7 +186,7 @@ const Main=()=>{
         .catch((error)=>{
             if(error.response.status===403){
                 localStorage.removeItem('authorization');
-                navigate("/login")
+                navigate("/login");
             }
         })
 
@@ -222,7 +222,7 @@ const Main=()=>{
         .catch((error)=>{
             if(error.response.status===403){
                 localStorage.removeItem('authorization');
-                navigate("/login")
+                navigate("/login");
             }
         })
 
@@ -256,7 +256,7 @@ const Main=()=>{
         .catch((error)=>{
             if(error.response.status===403){
                 localStorage.removeItem('authorization');
-                navigate("/login")
+                navigate("/login");
             }
         })
     },[]);
@@ -286,7 +286,7 @@ const Main=()=>{
           .catch((error) => {
             if (error.response.status === 403) {
                 localStorage.removeItem('authorization');
-                navigate("/login")
+                navigate("/login");
             }
           });
     };

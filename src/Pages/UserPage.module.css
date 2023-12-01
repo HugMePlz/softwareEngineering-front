@@ -170,6 +170,24 @@ hr {
     padding: 10px;
 }
 
+.review input{
+    display: inline-block;
+    float: right;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    border-radius: 8px;
+    border: 1px solid #999;
+    appearance: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.review input:checked{
+    background-color: #fbcc0c;
+    border: none;
+}
+
 .mypageMovie:hover{
     cursor: pointer;
     /*color: #f62617;*/
