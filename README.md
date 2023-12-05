@@ -1,70 +1,147 @@
-# Getting Started with Create React App
+## 프로젝트 소개
+"영리한 사람들"은 "영화 리뷰하는 사람들"을 줄인 말로, 영화 팬들이 영화에 대한 자신의 의견을 나눌 수 있는 플랫폼이다. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 개발 기간
+2023.8.25~2023.12.7
 
-## Available Scripts
+## 멤버구성
+조가을: 로그인, 회원가입, 마이페이지, 커뮤니티, 영화찜하기 
+박현정: 영화(예고편, 감독정보, 장르정보 등등), 선호 장르 
+김도형: 리뷰 crud, 리뷰 좋아요 기능 
+이정민: 메인, 영화 정보, 필모그래피, 장르, 영화 검색 화면 구현
+이채윤: 마이페이지, 마이페이지 수정, 유저 페이지, 리뷰 수정 화면 구현
+박지혜: 홈, 로그인, 회원가입, 커뮤니티, 구독, 사용자 검색 화면 구현
 
-In the project directory, you can run:
+##개발 환경
+[백엔드]
+- Java 17
+- JDK
+- IDE:19.0.1
+- Framework: Springboot3.1.4
+- Database: H2
+- ORM: JPA
 
-### `npm start`
+[프론트엔드]
+- node.js v18.16.1
+- npm v9.8.0
+- Framework: react v18.2.0
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+##주요기능
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+####로그인
+- Validation 검증 
+- DB값 검증(아이디, 비밀번호 일치 여부)
+- 로그인 성공 시 JWT 토큰 생성
 
-### `npm test`
+####회원가입
+- Validation 검증 (+비밀번호 재확인)
+- userId 중복 체크 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+####마이페이지
+- 사용자 정보 보기 
+- 사용자 정보 수정
+- 내가 쓴 리뷰 보기
+- 내가 찜한 영화 목록 보기
+- 사용자 선호 장르 조회/등록/수정
 
-### `npm run build`
+####커뮤니티
+- 사용자 팔로우, 언팔로우
+- 사용자 검색(사용자 아이디/ 닉네임 선택)
+- 전체 사용자 보기
+- 내가 팔로우한 사용자만 보기 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+####영화 메인 
+영화 목록 조회
+- 개봉 예정인 영화
+- 상영 중인 영화
+- 인기 있는 영화
+- 평점 높은 영화
+- 장르별 영화 목록
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+영화 검색
+- 배우/감독 이름으로 검색
+- 제목으로 검색
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+영화 추천
+- 사용자 선호 장르 기반 영화 추천
+- 사용자 MBTI 기반 영화 추천
 
-### `npm run eject`
+####영화 
+영화 상세 정보 조회
+- 영화 개봉일, 예고편 동영상, 감독, 배우 등 조회
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+필모그래피 조회
+- 배우/감독의 필모그래피 조회
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+영화 찜하기(북마크)
+- 영화 찜하기
+- 영화 찜 취소
+- 찜한 영화 모두 보기
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+리뷰 작성
+- 하고싶은 코멘트 작성
+- 별점 선택
+- 리뷰 등록
+- 리뷰 좋아요 지정 및 삭제
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+##화면 구성
 
-## Learn More
+공통
+- 로고 클릭 시 홈 화면 또는 메인 화면으로 이동
+- 로그아웃 버튼 클릭 시 로그아웃
+- 영화 포스터 클릭 시 해당 영화 정보 화면으로 이동
+- 사용자의 프로필 이미지 클릭시 클릭한 사용자의 유저페이지 화면으로 이동
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+####홈 화면(/)
+- [지금 바로, 리뷰 시작하기!] 버튼 클릭: 로그인 화면으로 이동
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+####로그인 화면(/login)
+- 아이디, 비밀번호 입력 후 [로그인하기] 버튼 클릭 시 메인 화면으로 이동
 
-### Code Splitting
+####회원가입 화면(/join)
+- 아이디, 비밀번호, 비밀번호 확인, 이름, 닉네임, 전화번호, 성별, 생년월일 입력 후 [회원가입하기] 버튼 클릭 시 로그인 화면으로 이동
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+####메인화면(/main)
+- 장르 드롭다운에서 장르 선택: 선택한 장르 (default: ACTION)의 영화 목록 출력
+- 개봉 예정인 영화 목록, 현재 상영 중인 영화 목록, 인기 많은 영화 목록, 평점이 높은 영화 목록, MBTI 기반 추천 영화 목록, 선호 장르 기반 추천 영화 목록 출력
 
-### Analyzing the Bundle Size
+####영화 정보 화면(/movie-information/:movieId)
+- 제목 우측의 북마크 클릭 시 북마크 설정/해제
+- 감독 및 출연배우 클릭 시 클릭한 감독 및 출연배우의 필모그래피 화면으로 이동
+- 장르 클릭 시 클릭한 장르의 장르 화면으로 이동
+- 별점 드롭다운에서 별점 선택과 코멘트 작성 후 [등록] 클릭 시 리뷰 등록
+- 작성자 아이디 클릭 시 클릭한 작성자의 유저 페이지 화면으로 이동
+- 리뷰 공감 버튼 클릭 시 공감 등록/해제
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+####필모그래피 화면(/filmography/:personId)
+- 해당 감독 및 출연배우가 참여한 영화 목록 출력
 
-### Making a Progressive Web App
+####장르 화면(/genre/:genre)
+- 해당 장르의 영화 목록 출력
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+####영화 검색 화면(/movie-search)
+- 검색 필터 드롭다운에서 필터 선택, 키워드 입력 후 돋보기 클릭 시 조건에 맞는 영화 목록 출력
 
-### Advanced Configuration
+####마이 페이지 화면(/my-page)
+- [변경] 클릭 시 마이 페이지 변경 화면으로 이동
+- [수정] 버튼 클릭 시 해당 리뷰의 리뷰 수정 화면으로 이동
+- [삭제] 버튼 클릭 시 해당 리뷰 삭제 후 화면 새로고침
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+####마이 페이지 수정 화면(/my-page-edit)
+- 사용자 정보(프로필 이미지, 닉네임, 아이디, MBTI, 선호 장르 해시태그) 수정 후 [완료] 버튼 클릭 시 사용자 정보 변경 후 마이 페이지 화면으로 이동
 
-### Deployment
+####리뷰 수정 화면(/review-edit/:reviewId)
+- 별점 드롭다운에서 별점 선택과 코멘트 작성 후 [등록] 클릭 시 리뷰 수정 후 마이 페이지 화면으로 이동
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+####커뮤니티 화면(/community)
+- 모든 사용자 출력
 
-### `npm run build` fails to minify
+####구독 화면(/subscribe)
+- 구독한 사용자 출력
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+####유저 페이지 화면(/user-page/:userId)
+- [구독(구독 중)] 버튼 클릭 시 구독/구독 취소
+- 리뷰 공감 버튼 클릭: 공감 등록/해제
+
+####사용자 검색 화면(/user-search)
+- 검색 필터 드롭다운에서 필터 선택, 키워드 입력 후 돋보기 클릭 시 조건에 맞는 사용자 목록 출력
